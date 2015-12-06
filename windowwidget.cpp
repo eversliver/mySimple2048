@@ -24,19 +24,19 @@ WindowWidget::WindowWidget(QWidget * parent)
     font.setPixelSize(25);
 
 
-    restartButton = new QPushButton("Restart");
+    restartButton = new QPushButton("Restart", this);   //分配的时候一定要加上this指针，这样才是在当前的widget上面放置一个新的部件
     restartButton->setGeometry(100,120,200,50);
     restartButton->setFont(font);
     restartButton->setStyleSheet(QString(BTNSTYLESHEET).arg(3).arg(15));
     connect(restartButton, SIGNAL(clicked()), this->gameWidget, SLOT(restart()));
 
-    highScoreLabel = new QLabel(QString("High Score:\n%1").arg(highScore));
+    highScoreLabel = new QLabel(QString("High Score:\n%1").arg(highScore), this);
     highScoreLabel->setGeometry(209,20,180,70);
     highScoreLabel->setFont(font);
     highScoreLabel->setAlignment(Qt::AlignCenter);
     highScoreLabel->setStyleSheet(QString(LBLSTYLESHEET).arg(5).arg(20));
 
-    scoreLabel = new QLabel(QString("Score:\n0"));//初始化设置分数label上的值为0
+    scoreLabel = new QLabel(QString("Score:\n0"),this);//初始化设置分数label上的值为0
     scoreLabel->setGeometry(15,20,180,70);
     scoreLabel->setFont(font);
     scoreLabel->setAlignment(Qt::AlignCenter);
@@ -90,9 +90,9 @@ void WindowWidget::resizeEvent(QResizeEvent * )
     restartButton->setFont(font);
     highScoreLabel->setFont(font);
     scoreLabel->setFont(font);
-    restartButton->setStyleSheet(QString(BTNSTYLESHEET).arg(3*ratioW).arg(15*ratioH));
-    highScoreLabel->setStyleSheet(QString(LBLSTYLESHEET).arg(5*ratioW).arg(20*ratioH));
-    scoreLabel->setStyleSheet(QString(LBLSTYLESHEET).arg(5*ratioW).arg(20*ratioH));
+    //restartButton->setStyleSheet(QString(BTNSTYLESHEET).arg(3*ratioW).arg(15*ratioH));
+    //highScoreLabel->setStyleSheet(QString(LBLSTYLESHEET).arg(5*ratioW).arg(20*ratioH));
+    //scoreLabel->setStyleSheet(QString(LBLSTYLESHEET).arg(5*ratioW).arg(20*ratioH));
     qDebug() << "ratioW: " << ratioW << " " << ratioH ;
     gameWidget->setGeometry(2*ratioW, 200 * ratioH, 400 * ratioW, 400 * ratioH);
     restartButton->setGeometry(100 * ratioW, 120 * ratioH, 200 * ratioW, 50 * ratioH);

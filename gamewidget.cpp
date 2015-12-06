@@ -371,7 +371,7 @@ void GameWidget::paintEvent(QPaintEvent * )
     QBrush brush(QColor::fromRgb(121,141,81));
     painter.setBrush(brush);
     painter.setPen(Qt::NoPen);//使画出来的图形没有描边
-    painter.drawRoundedRect(QRectF(2*ratioW, 2*ratioH, width() - 4 * ratioW, width() - 4 * ratioH), rX, rY);
+    painter.drawRoundedRect(QRectF(2*ratioW, 2*ratioH, width() - 4 * ratioW, height() - 4 * ratioH), rX, rY);
 
     //设置小方格上字的字体
     QFont font;
